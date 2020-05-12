@@ -8,7 +8,7 @@
 5. What can be done more
 
 ###### 1. Application Details 
-This application will be useful for technicians to check Games Arena catelog.
+This application will be useful for gamers to check Games Arena catelog.
 
 ###### 2. How to Setup the application in your local
 - Clone the repo using ```git clone git@github.com:ajayg415/gainsight-system-test.git``` in your command prompt

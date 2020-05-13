@@ -23,8 +23,7 @@ const defauleProps = {
     "score": 8.5,
     "genre": "Puzzle",
     "editors_choice": "N"
-  }],
-  setData: jest.fn()
+  }]
 }
 
 const setup = (props = defauleProps, state = null) => {

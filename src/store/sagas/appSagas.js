@@ -1,12 +1,14 @@
 import { put } from "redux-saga/effects";
 import axios from 'axios';
 
+import actionTypes from './../actions/actionTypes'
+
 function* fetchGames(action) {
   try {
-    console.log(process.env)
+    console.log(process.env.REACT_APP_GAMES_URL)
     const response = yield axios.get('http://starlord.hackerearth.com/gamesarena');
     yield put({
-      type: 'STORE_GAMES_DATA',
+      type: actionTypes.STORE_GAMES_DATA,
       payload: response.data.filter(d=>(Object.values(d).length===5))
     });
   } catch (error) {

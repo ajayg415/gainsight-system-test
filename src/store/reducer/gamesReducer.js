@@ -1,4 +1,4 @@
-
+import actionTypes from './../actions/actionTypes'
 
 let initialState = {
   dataFromAjax : [],
@@ -13,7 +13,7 @@ let initialState = {
 
  const gamesReducer = (state = initialState, action) => {
   switch(action.type){
-    case 'STORE_GAMES_DATA':
+    case actionTypes.STORE_GAMES_DATA:
       return {...state, 
         dataFromAjax: action.payload, 
         dataCopy: action.payload.slice(),
@@ -21,7 +21,7 @@ let initialState = {
         paginationlength: Math.ceil(action.payload.length / state.cardsPerScreen)
       }
 
-    case 'UPDATE_CURRENT_SCREEN':
+    case actionTypes.UPDATE_CURRENT_SCREEN:
       const startItem = state.cardsPerScreen * (action.payload-1);
       const endItem = (state.cardsPerScreen * (action.payload-1)) + state.cardsPerScreen;
       return {...state, 
@@ -29,13 +29,13 @@ let initialState = {
         currentPage: action.payload
       }
 
-    case 'CARDS_PER_SCREEN':
+    case actionTypes.CARDS_PER_SCREEN:
       return {...state, 
         cardsPerScreen: action.payload,
         paginationlength: Math.ceil(state.dataCopy.length / state.cardsPerScreen)
       }
 
-    case 'SET_SORT_KEY':
+    case actionTypes.SET_SORT_KEY:
       if(action.payload !== ""){
         let sortedData = [];
         if(typeof state.dataFromAjax[0][action.payload] === 'number')
@@ -58,7 +58,7 @@ let initialState = {
         }
       }
     
-    case 'SET_SORT_ORDER':
+    case actionTypes.SET_SORT_ORDER:
       const sortedDataOrder = state.dataCopy.reverse();
       return {...state,
         sortOrder: action.payload,
@@ -66,7 +66,7 @@ let initialState = {
         displayData: sortedDataOrder.slice(0, state.cardsPerScreen)
       }
 
-    case 'SET_SEARCH_STRING':
+    case actionTypes.SET_SEARCH_STRING:
       if(action.payload == ''){
         return {...state,
           dataCopy : state.dataFromAjax,
